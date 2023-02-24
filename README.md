@@ -17,3 +17,30 @@ I am trying make this project use on nowaday c++ development, the original proje
 # todo
 1. able to compile 
 2. cmake support
+
+# do
+for `make`
+1. error: dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
+  * [How to replace dynamic exception specifications: throw(...)](https://stackoverflow.com/questions/54239292/how-to-replace-dynamic-exception-specifications-throw)
+  * comment out `/*throw (std::invalid_argument)*/;`
+1.  error: catching polymorphic type ‘class std::invalid_argument’ by value [-Werror=catch-value=]
+  * [What is this? catching polymorphic type X by value [-Wcatch-value=]](https://stackoverflow.com/questions/62030341/what-is-this-catching-polymorphic-type-x-by-value-wcatch-value)
+  * `} catch (std::invalid_argument expected)` --> `} catch (std::invalid_argument& expected)`
+  * `} catch (std::logic_error e)` --> `} catch (std::logic_error& e)`
+  * `} catch (gcl::closed_error expected) {` -->`} catch (gcl::closed_error& expected) {`
+1. error: moving a local object in a return statement prevents copy elision [-Werror=pessimizing-move]
+  * [C++ 函数返回局部变量的std::move()问题？](https://www.zhihu.com/question/57048704)
+  * `return std::move(elem);` --> `return elem;`
+1. error: ‘dummy’ may be used uninitialized [-Werror=maybe-uninitialized]
+  * ['dummy' may be used uninitialized](https://stackoverflow.com/questions/69935158/dummy-may-be-used-uninitialized)
+  * [gtest-death-test.cc](https://github.com/google/googletest/blob/main/googletest/src/gtest-death-test.cc)
+  * will directly specify gtest version by cmake in future. currently, just pass it.
+1. error: result of ‘(2 << 31)’ requires 34 bits to represent, but ‘int’ only has 32 bits [-Werror=shift-overflow=]
+  * `arr[j] = (double)random() / (double)((2 << 31) - 1);` --> `arr[j] = (double)random() / (double)(((unsigned long int)2 << 31) - 1);`
+
+for `make test`
+
+all the error from gtest
+`inlined from ‘const char* testing::internal::posix::StrNCpy(char*, const char*, size_t)’ at ../third_party/googletest/include/gtest/internal/gtest-port.h:1610:17,`
+1. error: ‘char* __builtin_strncpy(char*, const char*, long unsigned int)’ output truncated before terminating nul copying as many bytes from a string as its length [-Werror=stringop-truncation]
+[gtest-port-arch.h](https://github.com/google/googletest/blob/main/googletest/include/gtest/internal/gtest-port-arch.h)

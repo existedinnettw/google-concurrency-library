@@ -63,7 +63,7 @@ void test_enq(function<queue_op_status(const unsigned int&)> enq_fn,
     const int size = 100;
     double arr[size];
     for (int j = 0; j < size; ++j) {
-        arr[j] = (double)random() / (double)((2 << 31) - 1);
+        arr[j] = (double)random() / (double)(((unsigned long int)2 << 31) - 1);
     }
 
     b->arrive_and_wait();

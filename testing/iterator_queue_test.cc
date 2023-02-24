@@ -55,7 +55,7 @@ TEST_F(IteratorQueueTest, BasicRead) {
   try {
     queue.pop();
     FAIL();
-  } catch (gcl::closed_error expected) {
+  } catch (gcl::closed_error& expected) {
   }
 }
 

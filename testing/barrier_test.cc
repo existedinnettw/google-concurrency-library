@@ -43,7 +43,7 @@ TEST_F(BarrierTest, InvalidConstructorArg) {
   try {
     barrier b(kInvalidCount);
     FAIL();
-  } catch (std::invalid_argument expected) {
+  } catch (std::invalid_argument& expected) {
   }
 }
 

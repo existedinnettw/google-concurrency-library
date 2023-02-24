@@ -57,7 +57,7 @@ void mapper_helper(
       splitter.apply(value, apply_fn);
       mapper_obj->flush();
       ++num_mapped;
-    } catch (gcl::closed_error expected) {
+    } catch (gcl::closed_error& expected) {
       break;
     } catch (...) {
       break;
@@ -165,7 +165,7 @@ void reducer_helper(
       reducer_obj->start(task.shard_id);
       splitter.apply(task, reducer_fn);
       reducer_obj->flush();
-    } catch (gcl::closed_error expected) {
+    } catch (gcl::closed_error& expected) {
       break;
     }
   }

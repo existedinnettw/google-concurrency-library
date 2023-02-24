@@ -479,12 +479,12 @@ class latch {
 
 class barrier {
  public:
-  explicit barrier(size_t num_threads) throw (std::invalid_argument);
-  barrier(size_t num_threads, std::function&lt;void()&gt; completion) throw (std::invalid_argument);
-  barrier(size_t num_threads, void (*completion)()) throw (std::invalid_argument);
+  explicit barrier(size_t num_threads) /*throw (std::invalid_argument)*/;
+  barrier(size_t num_threads, std::function&lt;void()&gt; completion) /*throw (std::invalid_argument)*/;
+  barrier(size_t num_threads, void (*completion)()) /*throw (std::invalid_argument)*/;
 
-  barrier(size_t num_threads, std::function&lt;size_t()&gt; completion) throw (std::invalid_argument);
-  barrier(size_t num_threads, size_t (*completion)()) throw (std::invalid_argument);
+  barrier(size_t num_threads, std::function&lt;size_t()&gt; completion) /*throw (std::invalid_argument)*/;
+  barrier(size_t num_threads, size_t (*completion)()) /*throw (std::invalid_argument)*/;
   ~barrier();
 
   void count_down_and_wait();
@@ -657,12 +657,12 @@ operations has completed.
 <code>
 class barrier {
  public:
-  explicit barrier(size_t num_threads) throw (std::invalid_argument);
-  barrier(size_t num_threads, std::function&lt;void()&gt; completion) throw (std::invalid_argument);
-  barrier(size_t num_threads, void (*completion)()) throw (std::invalid_argument);
+  explicit barrier(size_t num_threads) /*throw (std::invalid_argument)*/;
+  barrier(size_t num_threads, std::function&lt;void()&gt; completion) /*throw (std::invalid_argument)*/;
+  barrier(size_t num_threads, void (*completion)()) /*throw (std::invalid_argument)*/;
 
-  barrier(size_t num_threads, std::function&lt;size_t()&gt; completion) throw (std::invalid_argument);
-  barrier(size_t num_threads, size_t (*completion)()) throw (std::invalid_argument);
+  barrier(size_t num_threads, std::function&lt;size_t()&gt; completion) /*throw (std::invalid_argument)*/;
+  barrier(size_t num_threads, size_t (*completion)()) /*throw (std::invalid_argument)*/;
 
   ~barrier();
 

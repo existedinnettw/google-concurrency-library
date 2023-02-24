@@ -338,8 +338,8 @@ class latch {
 
 class barrier {
  public:
-  explicit barrier(size_t num_threads) throw (std::invalid_argument);
-  explicit barrier(size_t num_threads, std::function&lt;void()&gt; f) throw (std::invalid_argument);
+  explicit barrier(size_t num_threads) /*throw (std::invalid_argument)*/;
+  explicit barrier(size_t num_threads, std::function&lt;void()&gt; f) /*throw (std::invalid_argument)*/;
   ~barrier();
 
   void count_down_and_wait();

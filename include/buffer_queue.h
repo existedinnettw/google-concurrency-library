@@ -285,7 +285,7 @@ Value buffer_queue<Value>::value_pop()
         Value elem;
         if ( wait_pop( elem ) == queue_op_status::closed )
             throw queue_op_status::closed;
-        return std::move(elem);
+        return elem;
     } catch (...) {
         close();
         throw;

@@ -35,7 +35,7 @@ TEST_F(BufferQueueTest, InvalidArg0) {
   try {
     buffer_queue<int> body(0);
     FAIL();
-  } catch (std::invalid_argument expected) {
+  } catch (std::invalid_argument& expected) {
   } catch (...) {
     FAIL();
   }
@@ -92,7 +92,7 @@ TEST_F(BufferQueueTest, InvalidIterators) {
   try {
     buffer_queue<int> body(2, values.begin(), values.end());
     FAIL();
-  } catch (std::invalid_argument expected) {
+  } catch (std::invalid_argument& expected) {
   } catch (...) {
   }
 }

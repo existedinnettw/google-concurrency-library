@@ -31,7 +31,7 @@ TEST_F(LockFreeBufferQueueTest, InvalidArg0) {
   try {
     lock_free_buffer_queue<int> body(0);
     FAIL();
-  } catch (std::invalid_argument expected) {
+  } catch (std::invalid_argument& expected) {
   } catch (...) {
     FAIL();
   }
@@ -71,7 +71,7 @@ TEST_F(LockFreeBufferQueueTest, InvalidIterators) {
   try {
     lock_free_buffer_queue<int> q(2, values.begin(), values.end());
     FAIL();
-  } catch (std::invalid_argument expected) {
+  } catch (std::invalid_argument& expected) {
   } catch (...) {
   }
 }

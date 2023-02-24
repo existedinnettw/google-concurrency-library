@@ -50,13 +50,13 @@ TEST_F(NotifyingBarrierTest, InvalidConstructorArg) {
   try {
     flex_barrier b(kZero, &num_threads_completion);
     FAIL();
-  } catch (std::invalid_argument expected) {
+  } catch (std::invalid_argument& expected) {
   }
   try {
     std::function<std::ptrdiff_t()> completion_fn = NULL;
     flex_barrier b(kZero, completion_fn);
     FAIL();
-  } catch (std::invalid_argument expected) {
+  } catch (std::invalid_argument& expected) {
   }
 }
 
@@ -74,7 +74,7 @@ static void WaitForNotifyingBarrierCountExceptions(
     if (progress_count != NULL) {
       (*progress_count)++;
     }
-  } catch (std::logic_error e) {
+  } catch (std::logic_error& e) {
     (*exception_count)++;
   }
 }
@@ -175,7 +175,7 @@ static void WaitForNotifyingBarrierCountExceptionsRetry(
       // flex_barrier, since only one thread needs to pass through this one.
       (*progress_count)++;
     }
-  } catch (std::logic_error e) {
+  } catch (std::logic_error& e) {
     (*exception_count)++;
   }
 }

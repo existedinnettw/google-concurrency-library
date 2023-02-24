@@ -32,7 +32,7 @@ namespace gcl {
 class flex_barrier {
  public:
   template <typename F>
-  flex_barrier(std::ptrdiff_t num_threads, F completion) throw (std::invalid_argument);
+  flex_barrier(std::ptrdiff_t num_threads, F completion) /*throw (std::invalid_argument)*/;
 
   explicit flex_barrier(ptrdiff_t num_threads);
 
@@ -65,7 +65,7 @@ class flex_barrier {
 
 template <typename F>
 flex_barrier::flex_barrier(std::ptrdiff_t num_threads,
-                           F completion) throw(std::invalid_argument)
+                           F completion) /*throw (std::invalid_argument)*/
     : thread_count_(num_threads), num_waiting_(0), completion_fn_(completion) {
   if (num_threads == 0) {
     throw std::invalid_argument("num_threads is 0");

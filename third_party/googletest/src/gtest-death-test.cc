@@ -943,7 +943,7 @@ bool StackLowerThanAddress(const void* ptr) {
 }
 
 bool StackGrowsDown() {
-  int dummy;
+  int dummy=0;
   return StackLowerThanAddress(&dummy);
 }
 
