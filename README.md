@@ -11,3 +11,9 @@ Concurrency Library, and run:
 
 
 `make clean` will take you back to a pristine checkout.
+
+---
+I am trying make this project use on nowaday c++ development, the original project is already archieve.
+# todo
+1. able to compile 
+2. cmake support
