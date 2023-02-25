@@ -15,10 +15,14 @@ Concurrency Library, and run:
 ---
 I am trying make this project use on nowaday c++ development, the original project is already archieve.
 # todo
-1. able to compile by gcc11
+1. able to compile core,test by gcc11
 2. cmake support
+3. able to compile sample
+  * success to compile dedup, blackscholes not yet.
+  * dedup: install `openssl`
 
-# do
+# log
+
 for `make`
 1. error: dynamic exception specifications are deprecated in C++11 [-Werror=deprecated]
   * [How to replace dynamic exception specifications: throw(...)](https://stackoverflow.com/questions/54239292/how-to-replace-dynamic-exception-specifications-throw)
@@ -47,3 +51,4 @@ all the error from gtest
 1. [Teaching googletest How to Print Your Values](http://google.github.io/googletest/advanced.html#teaching-googletest-how-to-print-your-values)
 1. map_reduce_test.cc, `error: ‘class gcl::queue_wrapper<gcl::buffer_queue<int> >’ has no member named ‘begin’` , mr.run(input_wrap.begin(), input_wrap.end());
 1. move `counter_test.cc`, `dynarray_test.cc`, `queue_pref_test.cc` to gtest, no need main() function.
+

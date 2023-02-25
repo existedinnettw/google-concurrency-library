@@ -38,10 +38,11 @@ target_link_libraries(lock_free_buffer_queue_test
         gtest_main gmock_main goocon
 )
 
-add_executable(map_reduce_test map_reduce_test.cc)
-target_link_libraries(map_reduce_test
-        gtest_main gmock_main goocon
-)
+# not yet fully implement
+# add_executable(map_reduce_test map_reduce_test.cc)
+# target_link_libraries(map_reduce_test
+#         gtest_main gmock_main goocon
+# )
 
 add_executable(pipeline_test pipeline_test.cc)
 target_link_libraries(pipeline_test

@@ -7,6 +7,7 @@
 #define _TREE_H_
 
 #include "binheap.h"
+#include "dedupdef.h"
 
 struct tree_element {
   sequence_number_t l1num;

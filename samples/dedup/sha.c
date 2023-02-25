@@ -1,7 +1,8 @@
 #include "openssl/sha.h"
 
 #define SHA_1
-#include "openssl/sha_locl.h"
+// #include "openssl/sha_locl.h"
+// #include <openssl/crypto/sha/sha_locl.h>
 
 void SHA1_Digest(const void *data, size_t len, unsigned char *digest) {
   SHA_CTX sha;

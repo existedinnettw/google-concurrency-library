@@ -22,7 +22,7 @@
 #endif //ENABLE_PARSEC_HOOKS
 
 
-config_t * conf;
+static config_t * conf;
 
 
 

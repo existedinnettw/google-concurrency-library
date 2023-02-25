@@ -127,7 +127,7 @@ TEST_F(MapReduceTest, TestMR) {
   for (int i = 0; i < 40; ++i) input_queue.push(1045);
   input_queue.close();
   queue_wrapper<buffer_queue<int> > input_wrap(input_queue);
-  // mr.run(input_wrap.begin(), input_wrap.end()); //no idea how to implement.
+  mr.run(input_wrap.begin(), input_wrap.end()); //no idea how to implement.
 
   // auto fr=input_wrap.front();
   // auto bk=input_wrap.back();

@@ -26,7 +26,7 @@
 #include <vector>
 
 #include <buffer_queue.h>
-#include <thread.h>
+#include <threads.h>
 #include <iterator_queue.h>
 #include <source.h>
 #include <pipeline.h>
