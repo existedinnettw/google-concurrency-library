@@ -1,3 +1,4 @@
+# ori project readme
 The Google Concurrency Library (GCL) is an attempt to export several
 internal C++ Google concurrency libraries in a form that the C++
 standard committee may accept for TR2.
@@ -13,23 +14,30 @@ Concurrency Library, and run:
 `make clean` will take you back to a pristine checkout.
 
 ---
-I am trying make this project use on nowaday c++ development, the original project is already archieve.
+# new readme
+I am trying make this project used on nowaday c++ development, since the original project is already archieve.
+Some function aren't implement as before. It's quite hard for me to make them done.
+* master branch: this work
+* disable_warning branch: remain project as close to origin as possible. but able to compile (disable warning as error).
+
 # feature
 1. able to compile core,test by gcc11
 2. cmake support
 3. able to compile sample
-  * success to compile dedup, blackscholes not yet.
-  * dedup: install `openssl`.
-  * blackscholes: source code seems not yet complete.
+     * success to compile dedup, blackscholes not yet.
+     * dedup: install `openssl`.
+     * blackscholes: source code seems not yet complete.
 4. able to install by `sudo make install`
-  * ```
-  target_link_libraries(YOUR_EXECUTABLE PRIVATE
-    goocon
-  )
-  target_include_directories(YOUR_EXECUTABLE PRIVATE
-      /usr/local/include/gcl
-  )
-```
+     * ```cmake
+          target_link_libraries(YOUR_EXECUTABLE PRIVATE
+            goocon
+          )
+          target_include_directories(YOUR_EXECUTABLE PRIVATE
+              /usr/local/include/gcl
+          )
+        ```
+
+
 # todo
 
 # log
