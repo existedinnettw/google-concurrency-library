@@ -5,7 +5,15 @@ FetchContent_Declare(
   # Specify the commit you depend on and update it regularly.
   URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
 )
-FetchContent_MakeAvailable(googletest)
+#[ Fix CMake documentation to prevent GoogleTest install #3486 ](https://github.com/google/googletest/issues/3486)
+option(INSTALL_GTEST "Enable installation of googletest." OFF)
+#[Disable install for FetchContent](https://stackoverflow.com/questions/65527126/disable-install-for-fetchcontent)
+FetchContent_GetProperties(googletest)
+if(NOT googletest_POPULATED)
+  FetchContent_Populate(googletest)
+  add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR} EXCLUDE_FROM_ALL)
+endif()
+# FetchContent_MakeAvailable(googletest)
 # find_package(GTest REQUIRED)
 # include_directories(${GTEST_INCLUDE_DIRS})
 

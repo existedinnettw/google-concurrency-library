@@ -14,12 +14,23 @@ Concurrency Library, and run:
 
 ---
 I am trying make this project use on nowaday c++ development, the original project is already archieve.
-# todo
+# feature
 1. able to compile core,test by gcc11
 2. cmake support
 3. able to compile sample
   * success to compile dedup, blackscholes not yet.
-  * dedup: install `openssl`
+  * dedup: install `openssl`.
+  * blackscholes: source code seems not yet complete.
+4. able to install by `sudo make install`
+  * ```
+  target_link_libraries(YOUR_EXECUTABLE PRIVATE
+    goocon
+  )
+  target_include_directories(YOUR_EXECUTABLE PRIVATE
+      /usr/local/include/gcl
+  )
+```
+# todo
 
 # log
 
