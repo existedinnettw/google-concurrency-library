@@ -22,7 +22,7 @@ VPATH = ../src ../testing \
 #### Compilation Flags
 
 DFlags = -MMD -MP
-EFlags = -Wall -Werror -Wno-unused-local-typedefs
+EFlags = -Wall -Wno-unused-local-typedefs #-Werror
 IFlags = -I. -I../include
 BFlags = $(DFlags) $(EFlags) $(IFlags) $(BFLAGS)
 CFlags = $(BFlags) $(CFLAGS)

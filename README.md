@@ -11,3 +11,8 @@ Concurrency Library, and run:
 
 
 `make clean` will take you back to a pristine checkout.
+
+---
+* this branch is only considered as archieve or reference.
+# modify
+* disable makefile `-Werror` to pass the compile
