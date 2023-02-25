@@ -23,23 +23,22 @@
 #include "cleanup_assert.h"
 #include "queue_base.h"
 
-using namespace gcl;
 
 inline std::ostream& operator<<(
     std::ostream& stream,
-    queue_op_status status )
+    gcl::queue_op_status status )
 {
     switch ( status ) {
-        case queue_op_status::success:
+        case gcl::queue_op_status::success:
             stream << "success";
             break;
-        case queue_op_status::empty:
+        case gcl::queue_op_status::empty:
             stream << "empty";
             break;
-        case queue_op_status::full:
+        case gcl::queue_op_status::full:
             stream << "full";
             break;
-        case queue_op_status::closed:
+        case gcl::queue_op_status::closed:
             stream << "closed";
             break;
         default:
@@ -47,6 +46,28 @@ inline std::ostream& operator<<(
     }
     return stream;
 }
+
+namespace gcl{
+    void PrintTo(const queue_op_status& status, std::ostream* os) {
+        switch ( status ) {
+            case queue_op_status::success:
+                *os << "success";
+                break;
+            case queue_op_status::empty:
+                *os << "empty";
+                break;
+            case queue_op_status::full:
+                *os << "full";
+                break;
+            case queue_op_status::closed:
+                *os << "closed";
+                break;
+            default:
+                *os << "FAILURE";
+        }
+    }
+}
+using namespace gcl;
 
 // Test the sequential filling of any empty queue.
 void seq_fill(
@@ -104,7 +125,7 @@ void seq_try_fill(
     ASSERT_TRUE(bk.is_empty());
     for ( int i = 1; i <= count; ++i ) {
         ASSERT_EQ(queue_op_status::success,
-                  bk.try_push(i * multiplier));
+                 bk.try_push(i * multiplier));//this contain bug
         ASSERT_FALSE(bk.is_empty());
     }
 }
@@ -744,5 +765,6 @@ void parallel_mixed_pipe(
     t1.join();
     ASSERT_TRUE(tail.is_empty());
 }
+
 
 #endif

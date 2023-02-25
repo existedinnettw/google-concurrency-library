@@ -15,7 +15,7 @@ Concurrency Library, and run:
 ---
 I am trying make this project use on nowaday c++ development, the original project is already archieve.
 # todo
-1. able to compile 
+1. able to compile by gcc11
 2. cmake support
 
 # do
@@ -44,3 +44,6 @@ all the error from gtest
 `inlined from ‘const char* testing::internal::posix::StrNCpy(char*, const char*, size_t)’ at ../third_party/googletest/include/gtest/internal/gtest-port.h:1610:17,`
 1. error: ‘char* __builtin_strncpy(char*, const char*, long unsigned int)’ output truncated before terminating nul copying as many bytes from a string as its length [-Werror=stringop-truncation]
 [gtest-port-arch.h](https://github.com/google/googletest/blob/main/googletest/include/gtest/internal/gtest-port-arch.h)
+1. [Teaching googletest How to Print Your Values](http://google.github.io/googletest/advanced.html#teaching-googletest-how-to-print-your-values)
+1. map_reduce_test.cc, `error: ‘class gcl::queue_wrapper<gcl::buffer_queue<int> >’ has no member named ‘begin’` , mr.run(input_wrap.begin(), input_wrap.end());
+1. move `counter_test.cc`, `dynarray_test.cc`, `queue_pref_test.cc` to gtest, no need main() function.

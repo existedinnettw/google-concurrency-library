@@ -33,6 +33,7 @@
 #include "lock_free_buffer_queue.h"
 #include "queue_base.h"
 #include <thread>
+#include "gtest/gtest.h"
 
 
 using namespace std;
@@ -205,7 +206,8 @@ struct lock_free_buffer_queue_nonblock_func {
 
 }  // namespace gcl
 
-int main(int argc, char** argv) {
+// int main(int argc, char** argv) {
+TEST(LockGuardTest, Simple) {
     const size_t MAX_THREADS = 16;
     const size_t TOTAL_OPS = 1000000;
     const size_t QUEUE_SIZE = 1000;
@@ -272,5 +274,5 @@ int main(int argc, char** argv) {
             ops_per_thread);
     }
 
-    return 0;
+    // return 0;
 }

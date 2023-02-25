@@ -229,4 +229,4 @@ class identity_reducer {
 
 }  // namespace gcl
 
-#endif GCL_MAP_REDUCE_HELPERS_
+#endif //GCL_MAP_REDUCE_HELPERS_

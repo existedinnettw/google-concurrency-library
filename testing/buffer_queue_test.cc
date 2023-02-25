@@ -16,6 +16,7 @@
 #include "queue_base_test.h"
 
 using gcl::buffer_queue;
+using namespace gcl;
 
 const int kSmall = 4;
 const int kLarge = 1000;
