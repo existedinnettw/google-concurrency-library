@@ -6,6 +6,7 @@ add_library(goocon STATIC
         mutable_thread.cc serial_executor.cc simple_thread_pool.cc stream_mutex.cc
 )
 target_include_directories(goocon PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(goocon PRIVATE pthread)
 # why flex_barrier_test.cc put in src?
 
 # cmake install doesn't work as expect
