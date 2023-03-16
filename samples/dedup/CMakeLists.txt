@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.11)
 set(CMAKE_C_STANDARD 99)
 find_package(OpenSSL REQUIRED)
 find_package(ZLIB)
+#find_package(Threads) #pthread
 # include_directories(${CMAKE_SOURCE_DIR}/sample/dedup)
 # add_executable(binheap binheap.c)
 # add_executable(decoder decoder.c)
@@ -14,5 +15,6 @@ target_link_libraries(dedup PRIVATE
         m ZLIB::ZLIB 
         OpenSSL::SSL
         OpenSSL::Crypto
+	pthread
 )
-target_compile_options(dedup PUBLIC "-pthread")
+#target_compile_options(dedup PUBLIC "-pthread")

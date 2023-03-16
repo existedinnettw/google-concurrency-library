@@ -71,6 +71,7 @@
         "list": "cpp",
         "binheap.h": "c",
         "sha_locl.h": "c",
-        "tree.h": "c"
+        "tree.h": "c",
+        "*.ipp": "cpp"
     }
 }
