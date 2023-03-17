@@ -20,8 +20,8 @@
 /*-----------------------------------------------------------------------*/
 
 typedef uint8_t  u_char;
-typedef uint64_t u_long;
-typedef uint64_t ulong;
+// typedef uint64_t u_long; //already define in sys/types.h
+// typedef uint64_t ulong; //already define in sys/types.h
 typedef uint32_t u_int;
 
 typedef uint8_t  byte;

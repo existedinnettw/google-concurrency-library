@@ -4,6 +4,8 @@ FetchContent_Declare(
   googletest
   # Specify the commit you depend on and update it regularly.
   URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
+  #DOWNLOAD_NO_EXTRACT TRUE
+#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 #[ Fix CMake documentation to prevent GoogleTest install #3486 ](https://github.com/google/googletest/issues/3486)
 option(INSTALL_GTEST "Enable installation of googletest." OFF)
@@ -79,13 +81,13 @@ target_link_libraries(dynarray_test
 )
 
 include(GoogleTest)
-gtest_discover_tests(lower_test)
-gtest_discover_tests(higher_test)
-gtest_discover_tests(lock_free_buffer_queue_test)
-# gtest_discover_tests(map_reduce_test)
-gtest_discover_tests(pipeline_test)
-gtest_discover_tests(queue_perf_test)
+gtest_add_tests(TARGET lower_test )  #gtest_discover_tests doesn't work for crosscompile
+gtest_add_tests(TARGET higher_test)
+gtest_add_tests(TARGET lock_free_buffer_queue_test)
+# gtest_discover_tests(map_reduce_test) #not yet accomplish
+gtest_add_tests(TARGET pipeline_test)
+gtest_add_tests(TARGET queue_perf_test)
 # gtest_discover_tests(queue_perf_test DISCOVERY_TIMEOUT  600)
-gtest_discover_tests(scoped_guard_test)
-gtest_discover_tests(counter_test)
-gtest_discover_tests(dynarray_test)
+gtest_add_tests(TARGET scoped_guard_test)
+gtest_add_tests(TARGET counter_test)
+gtest_add_tests(TARGET dynarray_test)
