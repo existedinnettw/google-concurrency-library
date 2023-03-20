@@ -86,7 +86,7 @@ gtest_add_tests(TARGET higher_test)
 gtest_add_tests(TARGET lock_free_buffer_queue_test)
 # gtest_discover_tests(map_reduce_test) #not yet accomplish
 gtest_add_tests(TARGET pipeline_test)
-gtest_add_tests(TARGET queue_perf_test)
+# gtest_add_tests(TARGET queue_perf_test) #take lots of time
 # gtest_discover_tests(queue_perf_test DISCOVERY_TIMEOUT  600)
 gtest_add_tests(TARGET scoped_guard_test)
 gtest_add_tests(TARGET counter_test)
