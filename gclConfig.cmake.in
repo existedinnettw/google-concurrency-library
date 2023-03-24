@@ -1,0 +1,18 @@
+
+
+@PACKAGE_INIT@
+
+# find_dependency(xx 2.0)
+
+set_and_check(GCL_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@") #, for ${project_name}.cmake.in by configure_package_config_file
+# set(GCL_INCLUDE_DIRS   ${PREFIX}/include/gcl )
+# set_and_check(GCL_SYSCONFIG_DIR "@PACKAGE_SYSCONFIG_INSTALL_DIR@")
+# message( status "gcl libraries" GCL_LIBRARIES )
+set_and_check(GCL_LIBRARIES "@PACKAGE_INSTALL_LIBRARIES@") #set(Foo_LIBRARIES ${PREFIX}/lib/foo-1.2/libfoo.a)
+# set(GCL_LIBRARIES ${PREFIX}/lib/libgoocon.a)
+check_required_components(gcl)
+include(CMakeFindDependencyMacro)
+find_package(Threads REQUIRED) #goocon needed package
+
+
+include(${CMAKE_CURRENT_LIST_DIR}/gclTargets.cmake) #about lib created
