@@ -6,3 +6,5 @@
 *.d
 *.o
 *.a
+CMakeUserPresets.json
+**/build/**

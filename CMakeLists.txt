@@ -17,25 +17,31 @@ if (NOT BUILD_TESTING STREQUAL OFF)
     add_subdirectory(testing)
 endif()
 
-include(GNUInstallDirs)
-set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR}/gcl CACHE PATH "Location of header files" )
-# set(SYSCONFIG_INSTALL_DIR ${CMAKE_INSTALL_SYSCONFDIR}/gcl
-#     CACHE PATH "Location of configuration files" ) #have no set file
-set(INSTALL_LIBRARIES ${CMAKE_INSTALL_LIBDIR}/libgoocon.a CACHE PATH "Location of libries." )
-# set(INSTALL_LIBRARIES "/usr/local/lib/libgoocon.a" CACHE PATH "Location of libries." )
-#...
+
+
+#======================create xxxConfig.cmake===============================
 include(CMakePackageConfigHelpers)
-configure_package_config_file(gclConfig.cmake.in
+configure_package_config_file(
+  gclConfig.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/gclConfig.cmake
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/gcl
-  PATH_VARS INCLUDE_INSTALL_DIR 
-#   SYSCONFIG_INSTALL_DIR
-  INSTALL_LIBRARIES
+  INSTALL_DESTINATION lib/cmake/gcl #${CMAKE_INSTALL_LIBDIR}/cmake/gcl
+  PATH_VARS
+  # INCLUDE_INSTALL_DIR INSTALL_LIBRARIES
+  INCLUDE_DIRS LIB_DIR
+)
+# create xxxConfigVersion.cmake file
+write_basic_package_version_file(
+	${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+	VERSION ${CMAKE_PROJECT_VERSION}
+	COMPATIBILITY SameMajorVersion
 )
 
+# install xxxConfig.cmake file
 # install(FILES "gclConfig.cmake"
 #         #       "${CMAKE_CURRENT_BINARY_DIR}/gclConfigVersion.cmake"
 #         DESTINATION lib/cmake/gcl)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/gclConfig.cmake
             #   ${CMAKE_CURRENT_BINARY_DIR}/FooConfigVersion.cmake
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/gcl )
+        # DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/gcl )
+        DESTINATION lib/cmake/gcl )
+        

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 
-# include_directories(${CMAKE_SOURCE_DIR}/include)
-set(THREADS_PREFER_PTHREAD_FLAG ON)
+set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads REQUIRED)
 
 add_library(
@@ -20,8 +20,15 @@ target_include_directories(goocon PUBLIC
         $<INSTALL_INTERFACE:include/gcl>  # <prefix>/include/gcl
 )
 target_link_libraries(goocon Threads::Threads)
-# why flex_barrier_test.cc put in src?
 
+# include(GNUInstallDirs)
+# set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR}/gcl CACHE PATH "Location of header files" )
+set(INCLUDE_DIRS include/gcl CACHE PATH "Location of header files" )
+# set(INSTALL_LIBRARIES ${CMAKE_INSTALL_LIBDIR}/libgoocon.a CACHE PATH "Location of libries." )
+# set(LIBRARIES lib/goocon CACHE PATH "Location of libraries." ) #this not work.
+set(LIB_DIR lib CACHE PATH "Location to place libraries.")
+
+#==================create target file xxxTarget.cmake======================
 # cmake install doesn't work as expect make shure it install header and doesn't
 # install gtest
 install(

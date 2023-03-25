@@ -16,7 +16,7 @@
 find_package(GTest 
 #   1.12.0...1.13.0 
   REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
+# include_directories(${GTEST_INCLUDE_DIRS})
 
 # [CMake testing sources from different
 # folder](https://stackoverflow.com/questions/13797224/cmake-testing-sources-from-different-folder)
@@ -31,36 +31,37 @@ add_executable(
 # all should include, [[gtest] build
 # failure](https://github.com/microsoft/vcpkg/issues/12105)
 target_link_libraries(
-  lower_test GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main
-  # ${GTEST_BOTH_LIBRARIES} #this work
+  lower_test 
+  GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main
+  # ${GTEST_BOTH_LIBRARIES} #this work, but not work for conan, not recommand.
   goocon)
 
 add_executable(higher_test source_test.cc iterator_queue_test.cc
                            stream_mutex_test.cc buffer_queue_test.cc)
-target_link_libraries(higher_test ${GTEST_BOTH_LIBRARIES} goocon)
+target_link_libraries(higher_test GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main goocon)
 
 add_executable(lock_free_buffer_queue_test lock_free_buffer_queue_test.cc)
-target_link_libraries(lock_free_buffer_queue_test ${GTEST_BOTH_LIBRARIES}
+target_link_libraries(lock_free_buffer_queue_test GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main
                       goocon)
 
 # not yet fully implement add_executable(map_reduce_test map_reduce_test.cc)
-# target_link_libraries(map_reduce_test ${GTEST_BOTH_LIBRARIES} goocon )
+# target_link_libraries(map_reduce_test GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main goocon )
 
 add_executable(pipeline_test pipeline_test.cc)
-target_link_libraries(pipeline_test ${GTEST_BOTH_LIBRARIES} goocon)
+target_link_libraries(pipeline_test GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main goocon)
 
 add_executable(queue_perf_test queue_perf_test.cc)
-target_link_libraries(queue_perf_test ${GTEST_BOTH_LIBRARIES} goocon)
+target_link_libraries(queue_perf_test GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main goocon)
 
 add_executable(scoped_guard_test scoped_guard_test.cc)
-target_link_libraries(scoped_guard_test ${GTEST_BOTH_LIBRARIES} goocon)
+target_link_libraries(scoped_guard_test GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main goocon)
 
 # simple test
 add_executable(counter_test counter_test.cc)
-target_link_libraries(counter_test ${GTEST_BOTH_LIBRARIES} goocon)
+target_link_libraries(counter_test GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main goocon)
 
 add_executable(dynarray_test dynarray_test.cc)
-target_link_libraries(dynarray_test ${GTEST_BOTH_LIBRARIES} goocon)
+target_link_libraries(dynarray_test GTest::gtest_main GTest::gtest GTest::gmock GTest::gmock_main goocon)
 
 include(GoogleTest)
 gtest_add_tests(TARGET lower_test) # gtest_discover_tests doesn't work for

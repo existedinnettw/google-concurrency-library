@@ -37,10 +37,11 @@ Some function aren't implement as before. It's quite hard for me to make them do
      * After installed, for any project want to use this lib, plz add following command in your cmake.
 
         * ```cmake
-              target_link_libraries(YOUR_EXECUTABLE PRIVATE
-                goocon
-              )
+              find_package(gcl CONFIG REQUIRED)
+              target_link_libraries(${your_target} gcl::goocon)
             ```
+
+3. install by `conan`
 
 # todo
 
