@@ -23,12 +23,13 @@ class gclRecipe(ConanFile):
     exports_sources = "CMakeLists.txt", "*.in", "src/*", "include/*", "samples/*", "testing/*"
     # exports_sources="./*"
 
-    requires = (["openssl/[~3]", "zlib/[~1]"])  # >=1.0 <2.0
+    requires = (["openssl/[~3]", "zlib/[~1]"])  # >=1.0 <2.0, #openssl ver 3 will show deprecate warn for sample dedup.
     # def requirements(self):
     #     self.requires(["openssl/[~3]", "zlib/[~1]"]) #>=1.0 <2.0 #not work
 
     def build_requirements(self):
         self.test_requires("gtest/[~1.12]")  # recipe forbid 13 for gcc5
+        self.tool_requires("cmake/[>=3.23 <=3.26]")
 
     def validate(self):
         check_min_cppstd(self, "14")

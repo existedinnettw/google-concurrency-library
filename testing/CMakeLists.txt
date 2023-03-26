@@ -1,30 +1,9 @@
-# [google test
-# readme](https://github.com/google/googletest/blob/main/googletest/README.md)
-# include(FetchContent) FetchContent_Declare( googletest # Specify the commit
-# you depend on and update it regularly. URL
-# https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
-# #DOWNLOAD_NO_EXTRACT TRUE #   DOWNLOAD_EXTRACT_TIMESTAMP TRUE ) #[ Fix CMake
-# documentation to prevent GoogleTest install #3486
-# ](https://github.com/google/googletest/issues/3486) option(INSTALL_gtest
-# "Enable installation of googletest." OFF) #[Disable install for
-# FetchContent](https://stackoverflow.com/questions/65527126/disable-install-for-fetchcontent)
-# FetchContent_GetProperties(googletest) if(NOT googletest_POPULATED)
-# FetchContent_Populate(googletest) add_subdirectory(${googletest_SOURCE_DIR}
-# ${googletest_BINARY_DIR} EXCLUDE_FROM_ALL) endif() #
-# FetchContent_MakeAvailable(googletest)
+cmake_minimum_required(VERSION 3.14) #cmake itself need 3.23 to support GTest::gmock. but with newer ver gtest, that's not need
 
 find_package(GTest 
 #   1.12.0...1.13.0 
   REQUIRED)
-# include_directories(${GTEST_INCLUDE_DIRS})
-
-# [CMake testing sources from different
-# folder](https://stackoverflow.com/questions/13797224/cmake-testing-sources-from-different-folder)
-# [CMake: How to setup unit testing of a
-# library](https://stackoverflow.com/questions/39863228/cmake-how-to-setup-unit-testing-of-a-library)
-
-# [How to include Google Mock in CMake downloading from
-# Github](https://stackoverflow.com/questions/72868754/how-to-include-google-mock-in-cmake-downloading-from-github)
+  
 add_executable(
   lower_test barrier_test.cc flex_barrier_test.cc serial_executor_test.cc
              simple_thread_pool_test.cc latch_test.cc mutable_thread_test.cc)
