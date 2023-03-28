@@ -1,6 +1,6 @@
 from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout
-from conan.tools.build import check_min_cppstd
+from conan.tools.build import check_min_cppstd, can_run, cross_building
 import os
 
 class gclRecipe(ConanFile):
@@ -49,7 +49,7 @@ class gclRecipe(ConanFile):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
-        if not self.conf.get("tools.build:skip_test", default=False):
+        if (not self.conf.get("tools.build:skip_test", default=False)) and can_run(self):
             # test_folder = os.path.join("tests")
             # if self.settings.os == "Windows":
             #     test_folder = os.path.join("tests", str(self.settings.build_type))
