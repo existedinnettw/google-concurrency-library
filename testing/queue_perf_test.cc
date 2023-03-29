@@ -22,7 +22,8 @@
 #include <sstream>
 #include <stdlib.h>
 #include <string>
-#include <time.h> //#include <sys/time.h>
+// #include <time.h> //#include <sys/time.h>
+#include <chrono>
 #include <vector>
 
 #include <atomic>
@@ -129,9 +130,10 @@ void test_harness(std::string test_name,
 
     // struct timeval start;
     // struct timeval end;
-    struct timespec start, end;
+    // struct timespec start, end;
     // gettimeofday(&start, NULL);
-    clock_gettime(CLOCK_REALTIME, &start);
+    // clock_gettime(CLOCK_REALTIME, &start);
+    auto start = std::chrono::system_clock::now();
     for (unsigned int i = 0; i < num_threads; ++i) {
         enq_threads.push_back(new thread(
             std::bind(test_enq, enq_fn, &enq_barrier, &total_enq,
@@ -151,11 +153,13 @@ void test_harness(std::string test_name,
         (*t)->join();
     }
     // gettimeofday(&end, NULL);
-    clock_gettime(CLOCK_REALTIME, &end);
-    unsigned long long diff_nsec = (end.tv_sec - start.tv_sec) * 1000000000;
-    diff_nsec += end.tv_nsec  - start.tv_nsec ;
+    // clock_gettime(CLOCK_REALTIME, &end);
+    auto end=std::chrono::system_clock::now();
+    // unsigned long long diff_nsec = (end.tv_sec - start.tv_sec) * 1000000000;
+    // diff_nsec += end.tv_nsec  - start.tv_nsec ;
     int real_total_ops = ops_per_thread * num_threads;
-    double elapsed_secs = (double)diff_nsec / 1000000000.0;
+    // double elapsed_secs = (double)diff_nsec / 1000000000.0;
+    double elapsed_secs = std::chrono::duration<double>(end - start).count();
     double time_per_op = elapsed_secs / real_total_ops;
 
 
