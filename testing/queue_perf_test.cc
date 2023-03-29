@@ -22,7 +22,7 @@
 #include <sstream>
 #include <stdlib.h>
 #include <string>
-#include <sys/time.h>
+#include <time.h> //#include <sys/time.h>
 #include <vector>
 
 #include <atomic>
@@ -127,9 +127,11 @@ void test_harness(std::string test_name,
     vector<thread*> enq_threads;
     vector<thread*> deq_threads;
 
-    struct timeval start;
-    struct timeval end;
-    gettimeofday(&start, NULL);
+    // struct timeval start;
+    // struct timeval end;
+    struct timespec start, end;
+    // gettimeofday(&start, NULL);
+    clock_gettime(CLOCK_REALTIME, &start);
     for (unsigned int i = 0; i < num_threads; ++i) {
         enq_threads.push_back(new thread(
             std::bind(test_enq, enq_fn, &enq_barrier, &total_enq,
@@ -148,11 +150,12 @@ void test_harness(std::string test_name,
          ++t) {
         (*t)->join();
     }
-    gettimeofday(&end, NULL);
-    unsigned long long diff_usec = (end.tv_sec - start.tv_sec) * 1000000;
-    diff_usec += end.tv_usec - start.tv_usec;
+    // gettimeofday(&end, NULL);
+    clock_gettime(CLOCK_REALTIME, &end);
+    unsigned long long diff_nsec = (end.tv_sec - start.tv_sec) * 1000000000;
+    diff_nsec += end.tv_nsec  - start.tv_nsec ;
     int real_total_ops = ops_per_thread * num_threads;
-    double elapsed_secs = (double)diff_usec / 1000000.0;
+    double elapsed_secs = (double)diff_nsec / 1000000000.0;
     double time_per_op = elapsed_secs / real_total_ops;
 
 
